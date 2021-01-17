@@ -11,6 +11,17 @@ class App extends Component {
     }
   }
 
+  componentDidMount (){
+    fetch('http://www.colourlovers.com/api/palettes/new?format=json&numResults=10&resultOffset=0')
+    .then(res => res.json())
+    .then(json => {
+      this.setState({
+        isLoaded: true,
+        items: json,
+      })
+      console.log(json);
+    })
+  }
  
 
   render() { 
