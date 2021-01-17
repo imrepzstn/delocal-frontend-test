@@ -12,26 +12,39 @@ class App extends Component {
     }
   }
 
+  
+
   componentDidMount (){
-    fetch('https://cors-anywhere.herokuapp.com/http://www.colourlovers.com/api/palettes/new?format=json&numResults=10&resultOffset=0')
+    fetch('https://cors-anywhere.herokuapp.com/http://www.colourlovers.com/api/palettes/new?format=json&numResults=20&resultOffset=0')
     .then(res => res.json())
     .then(json => {
       this.setState({
         isLoaded: true,
         items: json,
       })
-      console.log(json);
     })
+  }
+
+
+   handleScroll() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+      console.log("hahóó"); 
+      
+    }
+
+
   }
  
 
   render() { 
+// window.addEventListener('scroll', this.handleScroll);
    
     var {isLoaded, items} = this.state;
 
     if(!isLoaded) {
       return <div>Loading...</div>;
     }else{
+      window.addEventListener('scroll', this.handleScroll);
       console.log(items);
       return ( 
       <div className="App" >
