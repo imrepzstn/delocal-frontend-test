@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -16,9 +15,16 @@
   </head>
   <body>
     <div class="container">
+      <div class="update-bar" ><b id="lastUpdatedTime"></b></p></div>
       <div class="header-container"><h1 class="header">ColourLovers. <b>Live.</b></h1></div>
       <div id="root"></div>
     </div>
 
   </body>
+  <script>
+    const lastUpdatedTime = new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true });
+    document.getElementById(
+            'lastUpdatedTime'
+          ).innerHTML = `Last updated: ${lastUpdatedTime}`;
+  </script>
 </html>
