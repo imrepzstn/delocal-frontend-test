@@ -1,5 +1,6 @@
 import './App.css';
 import React, {Component} from "react";
+import  ColourLoversCard from "./components/colourLoversCard";
 
 class App extends Component {
 
@@ -12,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount (){
-    fetch('http://www.colourlovers.com/api/palettes/new?format=json&numResults=10&resultOffset=0')
+    fetch('https://cors-anywhere.herokuapp.com/http://www.colourlovers.com/api/palettes/new?format=json&numResults=10&resultOffset=0')
     .then(res => res.json())
     .then(json => {
       this.setState({
@@ -25,7 +26,23 @@ class App extends Component {
  
 
   render() { 
-    return <div></div>
+   
+    var {isLoaded, items} = this.state;
+
+    if(!isLoaded) {
+      return <div>Loading...</div>;
+    }else{
+      console.log(items);
+      return ( 
+      <div className="App" >
+        <div className='wrapper'>
+          {items.map(item => (
+         <ColourLoversCard key={item.id} ColourLoversCard={item} />
+
+          ))}
+        </div>
+      </div> );
+    }
    }
 
     

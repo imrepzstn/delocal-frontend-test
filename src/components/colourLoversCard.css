@@ -1,0 +1,62 @@
+
+
+.colour-card-container {
+    display: flex;
+    direction: row;
+    width: 50%;
+    margin-top: 30px;
+    padding-right: 30px;
+}
+@media (max-width: 600px) {
+    .colour-card-container {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+}
+
+.colour-card-data {
+    flex: 1.5;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.card-username {
+    font-size: 0.9rem;
+}
+
+.card-votes-container{
+margin-top: 15px;
+margin-bottom: 10px
+}
+
+.card-votes {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.colour-card-palette-wrapper {
+    flex: 1;
+}
+
+.colour-card-palette{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.palette-color {
+flex: 1;
+}
+
+
+
+
+  
