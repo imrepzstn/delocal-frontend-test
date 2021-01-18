@@ -1,0 +1,57 @@
+/* Container for colour card */
+.colour-card-container {
+  display: flex;
+  direction: row;
+  width: 50%;
+  margin-top: 30px;
+  padding-right: 30px;
+}
+/* Media-query for mobile first responsiveness */
+@media (max-width: 600px) {
+  .colour-card-container {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+/* Style for colour card data column */
+.colour-card-data {
+  flex: 1.5;
+  flex-direction: column;
+}
+/* Style for colour card title */
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+/* Style for card username */
+.card-username {
+  font-size: 0.9rem;
+}
+/* Container for votes and likes section */
+.card-votes-container {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+ /* Style for card votes section */
+.card-votes {
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 10px;
+}
+/* Container for colour palette column */
+.colour-card-palette-wrapper {
+  flex: 1;
+}
+/* Style for colour palette */
+.colour-card-palette {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+/* Flex for each colour in the colour palette */
+.palette-color {
+  flex: 1;
+}
