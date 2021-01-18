@@ -2,8 +2,8 @@
 Font-end application test.
 
 # Run Application
-  npm install
-  npm start
+  - npm install
+  - npm start
 
 # Used technologies
  - Node
