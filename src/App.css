@@ -5,6 +5,9 @@
   flex-wrap: wrap;
 }
 
-.loader {
-  font-size: 3rem;
+.loading {
+  padding-top: 25px;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }

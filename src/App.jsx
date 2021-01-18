@@ -52,6 +52,7 @@ function App() {
           <ColourLoversCard key={item.id} ColourLoversCard={item} />
         ))}
       </InfiniteScroll>
+      <div className="loading">Loading...</div>
     </div>
   );
 }
