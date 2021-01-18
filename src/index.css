@@ -9,7 +9,8 @@
 }
 body {
   background-color: #2E97D9;
-  min-height: 100vh
+  min-height: 105vh;
+  /* overflow-y: scroll; */
 }
 
 .container {

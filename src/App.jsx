@@ -1,63 +1,59 @@
 import './App.css';
-import React, {Component} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import  ColourLoversCard from "./components/colourLoversCard";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroller";
 
-class App extends Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      items: [],
-      isLoaded: false,
-    }
-  }
+function App() {
+  const numOfItems = 10;
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [itemsFrom, setitemsFrom] = useState(0);
 
   
 
-  componentDidMount (){
-    fetch('https://cors-anywhere.herokuapp.com/http://www.colourlovers.com/api/palettes/new?format=json&numResults=20&resultOffset=0')
-    .then(res => res.json())
-    .then(json => {
-      this.setState({
-        isLoaded: true,
-        items: json,
+  useEffect(() => {
+    axios
+      .get(
+        `https://my-cors-proxy.herokuapp.com/http://www.colourlovers.com/api/palettes/new?format=json&numResults=${numOfItems}&resultOffset=${itemsFrom}`
+      )
+      .then((res) => {
+        setItems((prevItems) => [...prevItems, ...res.data]);
+        console.log(res.data)
+        setIsLoading(false);
       })
-    })
-  }
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  }, [itemsFrom]);
 
 
-   handleScroll() {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
-      console.log("hahóó"); 
-      
-    }
+  const fetchItems = useCallback(() => {
+    setIsLoading(true);
+    setitemsFrom((itemsFrom) => itemsFrom + numOfItems);
 
+  }, []);
 
-  }
- 
-
-  render() { 
-// window.addEventListener('scroll', this.handleScroll);
    
-    var {isLoaded, items} = this.state;
-
-    if(!isLoaded) {
-      return <div>Loading...</div>;
-    }else{
-      window.addEventListener('scroll', this.handleScroll);
-      console.log(items);
-      return ( 
-      <div className="App" >
-        <div className='wrapper'>
-          {items.map(item => (
+return (
+<div className="App">
+        <InfiniteScroll
+        className="wrapper"
+        initialLoad ={isLoading}
+        loadMore={fetchItems}
+        useWindow={true}
+        hasMore={!isLoading}
+        threshold={800}
+      >
+         {items.map(item => (
          <ColourLoversCard key={item.id} ColourLoversCard={item} />
 
           ))}
-        </div>
-      </div> );
-    }
-   }
-
+      </InfiniteScroll>
+      </div> 
+      
+);
     
 }
  
