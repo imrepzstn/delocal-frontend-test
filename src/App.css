@@ -1,3 +1,4 @@
+/* Using flex for responsiveness */
 .wrapper {
   display: flex;
   flex-direction: row;
