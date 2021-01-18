@@ -22,7 +22,6 @@ function App() {
       )
       .then((res) => {
         setItems((prevItems) => [...prevItems, ...res.data]);
-        console.log(res.data);
         setIsLoading(false);
       })
       .catch((error) => {
